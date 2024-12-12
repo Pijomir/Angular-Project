@@ -1,0 +1,26 @@
+<header class="header">
+    <div class="logo-container">
+        <div class="logo">
+            <img src="logo.png" alt="Logo">
+        </div>
+        @if (isLoggedIn) {
+        <span class="username">Welcome, username</span>
+        }
+    </div>
+
+    <nav class="navbar">
+        <button class="btn btn-home" routerLink="/home">Home</button>
+        @if (!isLoggedIn) {
+        <div>
+            <button class="btn btn-primary" routerLink="/login">Login</button>
+            <button class="btn btn-secondary" routerLink="/register">Register</button>
+        </div>
+        } @else {
+        <div>
+            <button class="btn btn-primary" routerLink="/catalog">Catalog</button>
+            <button class="btn btn-danger">Logout</button>
+        </div>
+        }
+
+    </nav>
+</header>

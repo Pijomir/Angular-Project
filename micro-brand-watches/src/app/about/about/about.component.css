@@ -1,0 +1,29 @@
+.about-content {
+    display: flex;
+    flex-direction: column;
+    min-height: 67vh;
+    background: linear-gradient(135deg, #333333, #444444);
+    color: #e0e0e0;
+    font-family: Arial, sans-serif;
+    padding: 40px 20px;
+}
+
+.about-content {
+    flex-grow: 1;
+    max-width: 100;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.about-content h2 {
+    font-size: 28px;
+    color: #e0e0e0;
+    margin-bottom: 20px;
+}
+
+.about-content p {
+    font-size: 20px;
+    color: #a1a1a1;
+    line-height: 2;
+    margin-bottom: 20px;
+}
