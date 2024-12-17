@@ -1,7 +1,7 @@
 const { Router } = require("express");
 const { getAll, create, getById, getByAuthorId, deleteById, update } = require("../services/watchtService");
 const { isUser } = require("../middlewares/guards");
-const { body } = require("express-validator");
+const { body, validationResult } = require("express-validator");
 const { parseError } = require("../util");
 
 
@@ -22,13 +22,13 @@ catalogRouter.get('/', async (req, res) => {
         data = await getAll();
     }
 
-    res.json([data]);
+    res.json(data);
 });
 
 catalogRouter.post('/', isUser(),
     body('name').trim().isLength({ min: 3 }).withMessage('Watch name must be at least 3 characters long'),
     body('description').trim().isLength({ min: 15 }).withMessage('Watch description must be at least 15 characters long'),
-    body('name').trim().isURL({ require_tld: false, require_protocol: true }).withMessage('Watch image must be a valid URL'),
+    body('image').trim().isURL({ require_tld: false, require_protocol: true }).withMessage('Watch image must be a valid URL'),
     async (req, res) => {
         try {
             const validation = validationResult(req);
@@ -59,7 +59,7 @@ catalogRouter.get('/:id', async (req, res) => {
 catalogRouter.put('/:id', isUser(),
     body('name').trim().isLength({ min: 3 }).withMessage('Watch name must be at least 3 characters long'),
     body('description').trim().isLength({ min: 15 }).withMessage('Watch description must be at least 15 characters long'),
-    body('name').trim().isURL({ require_tld: false, require_protocol: true }).withMessage('Watch image must be a valid URL'),
+    body('image').trim().isURL({ require_tld: false, require_protocol: true }).withMessage('Watch image must be a valid URL'),
     async (req, res) => {
         try {
             const validation = validationResult(req);

@@ -18,20 +18,37 @@ export class UserService {
   }
 
   constructor(private http: HttpClient) {
+    const storedUserId = localStorage.getItem('user');
+    if (storedUserId) {
+      this.user = JSON.parse(storedUserId);
+      this.user$$.next(this.user);
+    }
+
     this.user$.subscribe((user) => {
       this.user = user;
     });
   }
 
   login(email: string, password: string) {
-    return this.http.post<User>('/users/login', {email, password}).pipe(tap(user => this.user$$.next(user)));
+    return this.http.post<User>('/users/login', { email, password })
+      .pipe(tap(user => {
+        localStorage.setItem('user', JSON.stringify(user));
+        this.user$$.next(user);
+      }));
   }
 
   register(username: string, email: string, password: string, rePassword: string) {
-    return this.http.post<User>('/users/register', { username, email, password, rePassword }).pipe(tap(user => this.user$$.next(user)));
+    return this.http.post<User>('/users/register', { username, email, password, rePassword })
+      .pipe(tap(user => {
+        localStorage.setItem('user', JSON.stringify(user));
+        this.user$$.next(user);
+      }));
   }
 
   logout() {
-    return this.http.post('/users/logout', {}).pipe(tap(user => this.user$$.next(null)));
+    return this.http.post('/users/logout', {}).pipe(tap(user => {
+      localStorage.removeItem('user');
+      this.user$$.next(null);
+    }));
   }
 }

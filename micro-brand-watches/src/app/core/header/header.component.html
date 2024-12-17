@@ -10,6 +10,9 @@
 
     <nav class="navbar">
         <button class="btn btn-home" routerLink="/home">Home</button>
+        <div>
+            <button class="btn btn-primary" routerLink="/catalog">Catalog</button>
+        </div>
         @if (!isLoggedIn) {
         <div>
             <button class="btn btn-primary" routerLink="/login">Login</button>
@@ -17,7 +20,8 @@
         </div>
         } @else {
         <div>
-            <button class="btn btn-primary" routerLink="/catalog">Catalog</button>
+            <button class="btn btn-primary" routerLink="/add-watch">Add Watch</button>
+            <button class="btn btn-primary" routerLink="/catalog">My Watches</button>
             <button class="btn btn-danger" (click)="logout()">Logout</button>
         </div>
         }

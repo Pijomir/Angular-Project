@@ -10,9 +10,16 @@ const API = '/';
 
 export const appInterceptor: HttpInterceptorFn = (req, next) => {
   if (req.url.startsWith(API)) {
+    const token = JSON.parse(localStorage.getItem('user') || '{}')?.accessToken;
+
+    const headers = token
+      ? req.headers.set('Authorization', `Bearer ${token}`)
+      : req.headers;
+
     req = req.clone({
       url: req.url.replace(API, apiUrl),
-      withCredentials: true
+      withCredentials: true,
+      headers
     });
   }
 
@@ -27,7 +34,6 @@ export const appInterceptor: HttpInterceptorFn = (req, next) => {
         localStorage.removeItem('user');
       } else {
         errorMsgService.setError(err);
-        router.navigate(['/error'])
       }
 
 

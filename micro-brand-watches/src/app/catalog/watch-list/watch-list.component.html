@@ -1,0 +1,20 @@
+<div class="catalog-content">
+    <h2>Watch Catalog</h2>
+    @if (isThereWatches) {
+    <div>
+        <p>No watches available at the moment. Please check back later!</p>
+    </div>
+    } @else {
+    @for (watch of watches; track $index) {
+    <div class="brand-images">
+        <div class="brand">
+            <img [src]="watch.image" [alt]="watch.name">
+            <h3>{{ watch.name | slice: 10}}</h3>
+            <p>{{ watch.description | slice: 30}}</p>
+            <button class="btn-primary" routerLink="">View Details</button>
+        </div>
+    </div>
+    }
+    }
+
+</div>

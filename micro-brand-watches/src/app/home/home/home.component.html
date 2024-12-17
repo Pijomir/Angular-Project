@@ -6,23 +6,32 @@
     <p>
       Unlike mainstream watch brands that rely on mass production and large marketing budgets, microbrands focus on offering high-quality, well-designed watches at affordable prices. They often use unique materials, advanced technology, and distinctive design elements that set them apart from traditional luxury watchmakers.
     </p>
-    <p>
-      Some of the most renowned microbrands include:
-    </p>
-    <div class="brand-images">
-      <div class="brand">
-        <h3>Monta</h3>
-        <img src="Monta.jpg" alt="Monta Watch">
-      </div>
-      <div class="brand">
-        <h3>Christopher Ward</h3>
-        <img src="CW.jpg" alt="Christopher Ward Watch">
-      </div>
-      <div class="brand">
-        <h3>Zelos</h3>
-        <img src="Zelos.jpg" alt="Zelos Watch">
-      </div>
+    @if (!isLoggedIn) {
+      <div>
+        <p>Have an account?</p>
+        <button class="btn btn-primary" routerLink="/login">Login</button>
+        <p>Don't have an account</p>
+        <button class="btn btn-secondary" routerLink="/register">Register</button>
     </div>
+    } @else {
+      <p>
+        Some of the most renowned microbrands include:
+      </p>
+      <div class="brand-images">
+        <div class="brand">
+          <h3>Monta</h3>
+          <img src="Monta.jpg" alt="Monta Watch">
+        </div>
+        <div class="brand">
+          <h3>Christopher Ward</h3>
+          <img src="CW.jpg" alt="Christopher Ward Watch">
+        </div>
+        <div class="brand">
+          <h3>Zelos</h3>
+          <img src="Zelos.jpg" alt="Zelos Watch">
+        </div>
+      </div>
+    }
     <p>
       Microbrands embrace the philosophy of delivering high-quality timepieces that tell a story and cater to the diverse tastes of watch lovers. Whether it's a classic dive watch, a minimalist dress watch, or a modern smartwatch, our goal is to provide exceptional watches that stand out from the crowd.
     </p>
