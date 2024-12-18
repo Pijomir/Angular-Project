@@ -13,7 +13,7 @@ export const appInterceptor: HttpInterceptorFn = (req, next) => {
     const token = JSON.parse(localStorage.getItem('user') || '{}')?.accessToken;
 
     const headers = token
-      ? req.headers.set('Authorization', `Bearer ${token}`)
+      ? req.headers.set('X-Authorization', token)
       : req.headers;
 
     req = req.clone({

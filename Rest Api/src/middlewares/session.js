@@ -13,7 +13,7 @@ function session() {
                 };
                 res.locals.hasUser = true;
             } catch (err) {
-                res.status(401).json({ code: 401, message: 'Invalid or expired token' });
+                res.status(403).json({ code: 403, message: 'Invalid or expired token' });
 
                 return;
             }
