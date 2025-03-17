@@ -1,7 +1,7 @@
 .home-content {
     display: flex;
     flex-direction: column;
-    min-height: 67vh;
+    min-height: 66vh;
     background: linear-gradient(135deg, #333333, #444444);
     color: #e0e0e0;
     font-family: Arial, sans-serif;
